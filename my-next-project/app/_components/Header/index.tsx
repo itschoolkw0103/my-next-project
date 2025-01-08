@@ -14,6 +14,19 @@ export default function Header() {
           priority
         />
       </a>
+      <nav className={styles.nav}>
+        <ul className={styles.items}>
+          <li>
+            <a href="/news">ニュース</a>
+          </li>
+          <li>
+            <a href="/members">メンバー</a>
+          </li>
+          <li>
+            <a href="/contact">お問い合わせ</a>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
