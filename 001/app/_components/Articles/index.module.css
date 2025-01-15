@@ -1,0 +1,16 @@
+.articles {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.postcard {
+  width: 94%;
+  margin: 3%;
+  transition: 0.5s;
+}
+
+.postcard:hover {
+  transform: scale(0.9);
+  opacity: 0.8;
+}

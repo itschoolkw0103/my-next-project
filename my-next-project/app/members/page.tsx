@@ -1,48 +1,10 @@
 import styles from "./page.module.css";
+import { getMemberList } from "../_libs/microcms";
+import { MEMBER_LIST_LIMIT } from "../_constants";
 import Image from "next/image";
 
-const data = {
-  contents: [
-    {
-      id: "1",
-      image: {
-        url: "/img-member1.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "デイビッド・チャン",
-      position: "CEO",
-      profile:
-        "てｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔ",
-    },
-    {
-      id: "2",
-      image: {
-        url: "/img-member2.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "エミリー・サンダース",
-      position: "COO",
-      profile:
-        "てｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔ",
-    },
-    {
-      id: "3",
-      image: {
-        url: "/img-member3.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "ジョン・ウィルソン",
-      position: "CTO",
-      profile:
-        "てｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔてｓｔ",
-    },
-  ],
-};
-
-export default function Page() {
+export default async function Page() {
+  const data = await getMemberList({ limit: MEMBER_LIST_LIMIT });
   return (
     <div className={styles.container}>
       {data.contents.length === 0 ? (
