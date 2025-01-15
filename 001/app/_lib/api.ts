@@ -44,3 +44,9 @@ export function getSelectPosts(tag?: string): Post[] {
 
   return returnPost;
 }
+
+export function sliceArray(arr: Post[], page: number) {
+  const startIndex: number = page * 6 - 6;
+  const returnArray: Post[] = arr.slice(startIndex, startIndex + 6);
+  return returnArray;
+}

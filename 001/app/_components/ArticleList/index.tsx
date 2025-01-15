@@ -2,14 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import Styles from "./index.module.css";
 
-import { getSelectPosts } from "@/app/_lib/api";
+import { getSelectPosts, sliceArray } from "@/app/_lib/api";
+import { Page } from "@/app/_interfaces/page";
 
-type Props = {
-  tag?: string;
-};
-
-export default function ArticleList(props: Props) {
-  const selectPosts = getSelectPosts(props.tag);
+export default function ArticleList(props?: Page) {
+  let pageNumber: number = 1;
+  if (Number.isNaN(props?.page) && props?.page !== undefined) {
+    pageNumber = props?.page;
+  }
+  const selectPosts = sliceArray(getSelectPosts(props?.tag), pageNumber);
 
   return (
     <div className={Styles.articles}>
