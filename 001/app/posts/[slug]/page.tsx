@@ -7,13 +7,13 @@ import markdownToHtml from "@/app/_lib/markdownToHtml";
 import Container from "@/app/_components/Container";
 
 type Params = {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
+  };
 };
 
 export default async function Slug(props: Params) {
-  const params = await props.params;
+  const params = props.params;
   const post = getPostBySlug(params.slug);
 
   if (!post) {
@@ -29,7 +29,7 @@ export default async function Slug(props: Params) {
 }
 
 export async function generateMetadata(props: Params): Promise<Metadata> {
-  const params = await props.params;
+  const params = props.params;
   const post = getPostBySlug(params.slug);
 
   if (!post) {

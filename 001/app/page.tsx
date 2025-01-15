@@ -1,10 +1,10 @@
 import Container from "@/app/_components/Container";
-import Articles from "@/app/_components/Articles";
+import ArticleList from "@/app/_components/ArticleList";
 
 export default function Home() {
   return (
     <Container>
-      <Articles tag="test" />
+      <ArticleList />
     </Container>
   );
 }

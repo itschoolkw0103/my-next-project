@@ -25,3 +25,22 @@ export function getAllPosts(): Post[] {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+
+export function getSelectPosts(tag?: string): Post[] {
+  const returnPost: Post[] = [];
+  const allPosts = getAllPosts();
+
+  if (!tag) {
+    allPosts.map((post) => {
+      returnPost.push(post);
+    });
+  } else {
+    allPosts.map((post) => {
+      if (post.tag === tag) {
+        returnPost.push(post);
+      }
+    });
+  }
+
+  return returnPost;
+}

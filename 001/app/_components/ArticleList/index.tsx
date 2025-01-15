@@ -2,22 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import Styles from "./index.module.css";
 
-import { getAllPosts } from "@/app/_lib/api";
+import { getSelectPosts } from "@/app/_lib/api";
 
 type Props = {
   tag?: string;
 };
 
-export default function Articles({ tag }: Props) {
-  const allPosts = getAllPosts();
-
-  if (!tag) {
-    return <p>not found</p>;
-  }
+export default function ArticleList(props: Props) {
+  const selectPosts = getSelectPosts(props.tag);
 
   return (
     <div className={Styles.articles}>
-      {allPosts.map((posts) => (
+      {selectPosts.map((posts) => (
         <article key={posts.slug} className={Styles.postcard}>
           <Link href={"posts/" + posts.slug}>
             <Image
