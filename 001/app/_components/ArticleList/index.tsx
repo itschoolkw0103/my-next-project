@@ -1,14 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import Styles from "./index.module.css";
 
 import { getSelectPosts, sliceArray } from "@/app/_lib/api";
-import { Page } from "@/app/_interfaces/page";
 
-export default function ArticleList(props?: Page) {
-  let pageNumber: number = 1;
-  if (Number.isNaN(props?.page) && props?.page !== undefined) {
-    pageNumber = props?.page;
+type Page = {
+  tag?: string;
+  page: number;
+};
+
+export default function ArticleList(props: Page) {
+  const pageNumber: number = props.page;
+  if (Number.isNaN(pageNumber) || pageNumber === undefined) {
+    notFound();
   }
   const selectPosts = sliceArray(getSelectPosts(props?.tag), pageNumber);
 

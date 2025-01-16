@@ -1,4 +1,4 @@
 export type Page = {
   tag?: string;
-  page?: number;
+  page?: string;
 };
